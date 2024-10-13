@@ -6,6 +6,7 @@
 //
 
 #import "LoginViewController.h"
+#import "URLSessionHTTP.h"
 
 @interface LoginViewController ()
 
@@ -20,6 +21,16 @@
 }
 
 - (IBAction)didTapLogin:(UIButton *)sender {
+    URLSessionHTTP *request = [[URLSessionHTTP alloc] init];
+    [request fetchDataForTvShowPath:@"/popular" completionHandler:^(id result, NSError *error) {
+        if (error != NULL) {
+            NSLog(@"%@", error);
+            return;
+        } else {
+            NSLog(@"%@", result);
+        }
+    }];
+    
 }
 
 

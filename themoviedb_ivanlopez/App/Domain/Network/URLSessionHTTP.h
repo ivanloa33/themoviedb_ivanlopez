@@ -1,0 +1,16 @@
+//
+//  URLSessionHTTP.h
+//  themoviedb_ivanlopez
+//
+//  Created by Ivan Lopez Ansaldo on 11/10/24.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface URLSessionHTTP : NSObject
+
+@property (nonatomic, strong) NSURLSessionTask *task;
+- (instancetype)initWithSession:(NSURLSession *)session;
+- (void)fetchDataForTvShowPath: (NSString *)path completionHandler: (void (^)(id result, NSError *error))completionHandler;
+
+@end
