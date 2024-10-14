@@ -28,24 +28,7 @@
             completionHandler(nil,error);
             return;
         }
-        
-        NSError *jsonError = nil;
-        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        
-        if (jsonError) {
-            completionHandler(nil, jsonError);
-            return;
-        }
-        
-//        NSMutableArray<Movie *> *movies = NSMutableArray.new;
-//        for (NSDictionary *movieDict in responseJSON[@"results"]) {
-//            Movie *newMovie = [[Movie alloc] initWithDictionary:movieDict];
-//            [movies addObject:newMovie];
-//        }
-        
-        completionHandler(responseJSON, nil);
-        
-
+        completionHandler(data, nil);
     }];
     
     [task resume];
