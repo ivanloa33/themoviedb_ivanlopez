@@ -6,13 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TvShowRepository.h"
 
 @interface LoginViewModel : NSObject
 
 - (instancetype)init;
-@property (nonatomic, strong) NSArray<Movie*> *popularMovies;
-- (void)getPopularMovies;
-@property (nonatomic, copy) void (^dataUpdatedBlock)(NSArray<Movie*> *movies);
 
 @end

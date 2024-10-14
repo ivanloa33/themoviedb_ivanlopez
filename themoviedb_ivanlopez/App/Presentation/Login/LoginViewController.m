@@ -6,7 +6,6 @@
 //
 
 #import "LoginViewController.h"
-#import "URLSessionHTTP.h"
 
 @interface LoginViewController ()
 
@@ -21,10 +20,11 @@
 }
 
 - (IBAction)didTapLogin:(UIButton *)sender {
-    [self.viewModel getPopularMovies];
-    self.viewModel.dataUpdatedBlock = ^(NSArray<Movie *> *movies) {
-        NSLog(@"%@", movies);
-    };
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomeViewModel *homeViewModel = [[HomeViewModel alloc] init];
+    HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    homeViewController.viewModel = homeViewModel;
+    [self.navigationController pushViewController:homeViewController animated:TRUE];
 }
 
 @end
