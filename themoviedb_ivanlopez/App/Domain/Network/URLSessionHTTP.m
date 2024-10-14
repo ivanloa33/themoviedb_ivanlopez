@@ -7,12 +7,6 @@
 
 #import "URLSessionHTTP.h"
 
-@interface URLSessionHTTP ()
-
-@property (nonatomic, strong) NSURLSession *session;
-
-@end
-
 @implementation URLSessionHTTP
 
 - (instancetype)initWithSession:(NSURLSession *)session {
@@ -29,24 +23,32 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod: @"GET"];
 
-    self.task = [NSURLSession.sharedSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionTask *task = [NSURLSession.sharedSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            completionHandler(nil,
- error);
+            completionHandler(nil,error);
             return;
         }
         
         NSError *jsonError = nil;
-        id result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        
         if (jsonError) {
             completionHandler(nil, jsonError);
             return;
         }
         
-        completionHandler(result, nil);
+//        NSMutableArray<Movie *> *movies = NSMutableArray.new;
+//        for (NSDictionary *movieDict in responseJSON[@"results"]) {
+//            Movie *newMovie = [[Movie alloc] initWithDictionary:movieDict];
+//            [movies addObject:newMovie];
+//        }
+        
+        completionHandler(responseJSON, nil);
+        
+
     }];
     
-    [self.task resume];
+    [task resume];
 }
 
 - (NSURL *)createURLWithPath:(NSString *)path {

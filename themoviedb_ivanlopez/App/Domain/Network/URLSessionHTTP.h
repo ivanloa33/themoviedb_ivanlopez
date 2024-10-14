@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Movie.h"
 
 @interface URLSessionHTTP : NSObject
 
-@property (nonatomic, strong) NSURLSessionTask *task;
+@property (nonatomic, strong) NSURLSession *session;
 - (instancetype)initWithSession:(NSURLSession *)session;
 - (void)fetchDataForTvShowPath: (NSString *)path completionHandler: (void (^)(id result, NSError *error))completionHandler;
 
