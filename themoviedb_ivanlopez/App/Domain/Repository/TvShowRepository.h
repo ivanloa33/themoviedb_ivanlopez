@@ -10,8 +10,9 @@
 
 @interface TvShowRepository : NSObject
 
+- (instancetype)init;
 @property (nonatomic, strong) URLSessionHTTP *client;
 @property (strong, nonatomic) NSArray<Movie *>* movies;
-- (void)fetchPopularMoviesWithCompletion:(void (^)(NSArray<Movie *> *data, NSError *error))completion;
+- (void)fetchPopularMoviesWithCompletion:(void (^)(NSArray<Movie *> *movies, NSError *error))completion;
 
 @end

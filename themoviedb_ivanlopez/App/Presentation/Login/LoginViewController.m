@@ -16,21 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.viewModel = [[LoginViewModel alloc] init];
     self.title = @"Login";
 }
 
 - (IBAction)didTapLogin:(UIButton *)sender {
-    URLSessionHTTP *request = [[URLSessionHTTP alloc] init];
-    [request fetchDataForTvShowPath:@"/popular" completionHandler:^(id result, NSError *error) {
-        if (error != NULL) {
-            NSLog(@"%@", error);
-            return;
-        } else {
-            NSLog(@"%@", result);
-        }
-    }];
+    [self.viewModel getPopularMovies];
+    self.viewModel.dataUpdatedBlock = ^(NSArray<Movie *> *movies) {
+        NSLog(@"%@", movies);
+    };
 }
-
 
 @end

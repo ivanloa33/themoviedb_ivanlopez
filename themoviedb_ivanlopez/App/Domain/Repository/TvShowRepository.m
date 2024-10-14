@@ -9,8 +9,16 @@
 
 @implementation TvShowRepository
 
+- (instancetype)init {
+    self = [super init];
+    
+    self.client = [[URLSessionHTTP alloc] init];
+    
+    return self;
+}
+
 - (void)fetchPopularMoviesWithCompletion:(void (^__strong)(NSArray<Movie *> *__strong, NSError *__strong))completion {
-    [self.client fetchDataForTvShowPath:@"popular" completionHandler:^(id result, NSError *error) {
+    [self.client fetchDataForTvShowPath:@"/popular" completionHandler:^(id result, NSError *error) {
         if (error != NULL) {
             NSLog(@"%@", error);
             return;
