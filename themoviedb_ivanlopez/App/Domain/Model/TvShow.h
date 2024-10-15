@@ -6,8 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ItemCellViewProtocol.h"
 
-@interface TvShow : NSObject
+@interface TvShow : NSObject<ItemCellViewProtocol>
 
 - (instancetype)initWithDictionary: (NSDictionary *)movieDict;
 @property (strong, nonatomic) NSString *name;

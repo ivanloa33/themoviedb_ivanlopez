@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 #import "TvShow.h"
+#import "ItemCellViewProtocol.h"
 
 @interface ItemCollectionViewCell : UICollectionViewCell
 
@@ -15,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *releaseDate;
 @property (weak, nonatomic) IBOutlet UILabel *voteAverage;
 @property (weak, nonatomic) IBOutlet UILabel *overview;
-- (void)setupCellWithMovie:(Movie *)movie;
-- (void)setupCellWithTvShow:(TvShow *)tvShow;
+- (void)setupCellWithItem:(id<ItemCellViewProtocol>)item;
 
 @end

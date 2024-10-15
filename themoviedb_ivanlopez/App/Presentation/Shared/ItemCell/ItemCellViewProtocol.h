@@ -1,20 +1,15 @@
 //
-//  Movie.h
+//  ItemCellViewProtocol.h
 //  themoviedb_ivanlopez
 //
-//  Created by Ivan Lopez Ansaldo on 13/10/24.
+//  Created by Ivan Lopez Ansaldo on 15/10/24.
 //
 
-#import <Foundation/Foundation.h>
-#import "ItemCellViewProtocol.h"
+@protocol ItemCellViewProtocol<NSObject>
 
-@interface Movie : NSObject<ItemCellViewProtocol>
-
-- (instancetype)initWithDictionary: (NSDictionary *)movieDict;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *overview;
 @property (strong, nonatomic) NSString *voteAverage;
 @property (strong, nonatomic) NSString *releaseDate;
 
 @end
-

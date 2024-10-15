@@ -14,18 +14,11 @@
     // Initialization code
 }
 
-- (void)setupCellWithMovie:(Movie *)movie {
-    self.title.text = movie.title;
-    self.releaseDate.text = movie.releaseDate;
-    self.voteAverage.text = movie.voteAverage;
-    self.overview.text = movie.overview;
-}
-
-- (void)setupCellWithTvShow:(TvShow *)tvShow {
-    self.title.text = tvShow.name;
-    self.releaseDate.text = tvShow.releaseDate;
-    self.voteAverage.text = tvShow.voteAverage;
-    self.overview.text = tvShow.overview;
+- (void)setupCellWithItem:(id<ItemCellViewProtocol>)item {
+    self.title.text = item.title;
+    self.releaseDate.text = item.releaseDate;
+    self.voteAverage.text = item.voteAverage;
+    self.overview.text = item.overview;
 }
 
 @end

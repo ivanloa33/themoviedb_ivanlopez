@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewModel.h"
 #import "ItemCollectionViewCell.h"
+#import "ItemCellViewProtocol.h"
 
 @interface HomeViewController : UIViewController<HomeViewProtocol, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 

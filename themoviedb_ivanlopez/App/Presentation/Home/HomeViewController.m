@@ -49,14 +49,10 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath { 
     ItemCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ItemCollectionViewCell" forIndexPath:indexPath];
-    if (self.segmentControl.selectedSegmentIndex == 0 || self.segmentControl.selectedSegmentIndex == 1) {
-        Movie *movie = self.viewModel.movies[indexPath.row];
-        [cell setupCellWithMovie:movie];
-    } else {
-        TvShow *tvShow = self.viewModel.tvShows[indexPath.row];
-        [cell setupCellWithTvShow:tvShow];
-    }
-    
+    id<ItemCellViewProtocol> item = (self.segmentControl.selectedSegmentIndex == 0 || self.segmentControl.selectedSegmentIndex == 1) ?
+    self.viewModel.movies[indexPath.row] :
+    self.viewModel.tvShows[indexPath.row];    
+    [cell setupCellWithItem:item];
     return cell;
 }
 
