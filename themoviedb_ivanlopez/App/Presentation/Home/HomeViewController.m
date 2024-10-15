@@ -11,16 +11,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"TV Shows";
+    self.navigationItem.hidesBackButton = YES;
+    [self setupCollectionView];
+    [self.viewModel getPopularMovies];
+}
+
+- (void)setupCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(175, 350);
-    layout.minimumInteritemSpacing = 8; // Adjust horizontal spacing
-    layout.minimumLineSpacing = 7; // Adjust vertical spacing
+    layout.minimumInteritemSpacing = 8;
+    layout.minimumLineSpacing = 7;
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
-    [self.viewModel getPopularMovies];
-    self.viewModel.dataUpdatedBlock = ^(NSArray<Movie *> *movies) {
-        NSLog(@"%@", movies);
-    };
 }
 
 - (IBAction)didChangeSegmentControl:(UISegmentedControl *)sender {
@@ -37,5 +40,10 @@
     return self.viewModel.popularMovies.count;
 }
 
+- (void)reloadData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
+}
 
 @end

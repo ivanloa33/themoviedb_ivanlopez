@@ -23,11 +23,8 @@
             NSLog(@"error");
             return;
         }
-        
         self.popularMovies = movies;
-        if (self.dataUpdatedBlock) {
-            self.dataUpdatedBlock(self.popularMovies);
-        }
+        [self.delegate reloadData];
         
     }];
 }

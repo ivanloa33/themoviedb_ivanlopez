@@ -24,6 +24,7 @@
     HomeViewModel *homeViewModel = [[HomeViewModel alloc] init];
     HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     homeViewController.viewModel = homeViewModel;
+    homeViewModel.delegate = homeViewController;
     [self.navigationController pushViewController:homeViewController animated:TRUE];
 }
 
