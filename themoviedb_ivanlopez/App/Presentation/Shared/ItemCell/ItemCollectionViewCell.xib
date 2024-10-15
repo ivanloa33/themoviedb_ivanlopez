@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6s-rB-A4j">
                         <rect key="frame" x="0.0" y="0.0" width="175" height="350"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xWa-lH-Wxw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="xWa-lH-Wxw">
                                 <rect key="frame" x="0.0" y="0.0" width="175" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="Iy3-qQ-KG6"/>
@@ -100,6 +100,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="poster-placeholder" width="300" height="450"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
