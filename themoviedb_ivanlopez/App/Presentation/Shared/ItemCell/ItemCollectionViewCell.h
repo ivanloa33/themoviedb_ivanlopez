@@ -12,6 +12,9 @@
 @interface ItemCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *releaseDate;
+@property (weak, nonatomic) IBOutlet UILabel *voteAverage;
+@property (weak, nonatomic) IBOutlet UILabel *overview;
 - (void)setupCellWithMovie:(Movie *)movie;
 - (void)setupCellWithTvShow:(TvShow *)tvShow;
 

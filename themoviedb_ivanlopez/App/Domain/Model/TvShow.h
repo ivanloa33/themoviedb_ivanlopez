@@ -11,6 +11,8 @@
 
 - (instancetype)initWithDictionary: (NSDictionary *)movieDict;
 @property (strong, nonatomic) NSString *name;
-
+@property (strong, nonatomic) NSString *overview;
+@property (strong, nonatomic) NSString *voteAverage;
+@property (strong, nonatomic) NSString *releaseDate;
 
 @end

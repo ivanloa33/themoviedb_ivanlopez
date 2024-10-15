@@ -27,6 +27,8 @@
 }
 
 - (IBAction)didChangeSegmentControl:(UISegmentedControl *)sender {
+    NSIndexPath *indexPathToTop = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPathToTop atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     switch (sender.selectedSegmentIndex) {
         case 0:
             [self.viewModel fetchPopularMovies];

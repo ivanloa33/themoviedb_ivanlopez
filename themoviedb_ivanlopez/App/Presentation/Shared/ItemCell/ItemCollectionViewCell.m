@@ -15,12 +15,17 @@
 }
 
 - (void)setupCellWithMovie:(Movie *)movie {
-    // Function body
     self.title.text = movie.title;
+    self.releaseDate.text = movie.releaseDate;
+    self.voteAverage.text = movie.voteAverage;
+    self.overview.text = movie.overview;
 }
 
 - (void)setupCellWithTvShow:(TvShow *)tvShow {
     self.title.text = tvShow.name;
+    self.releaseDate.text = tvShow.releaseDate;
+    self.voteAverage.text = tvShow.voteAverage;
+    self.overview.text = tvShow.overview;
 }
 
 @end
