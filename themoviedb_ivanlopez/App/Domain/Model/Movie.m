@@ -16,6 +16,7 @@
         self.overview = movieDict[@"overview"];
         self.voteAverage = [NSString stringWithFormat:@"%@", movieDict[@"vote_average"]];
         self.releaseDate = movieDict[@"release_date"];
+        self.posterPath = movieDict[@"poster_path"];
     }
     return self;
 }

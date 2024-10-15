@@ -11,5 +11,6 @@
 @property (strong, nonatomic) NSString *overview;
 @property (strong, nonatomic) NSString *voteAverage;
 @property (strong, nonatomic) NSString *releaseDate;
+@property (strong, nonatomic) NSString *posterPath;
 
 @end

@@ -91,6 +91,7 @@
             </constraints>
             <connections>
                 <outlet property="overview" destination="zfc-tg-8S0" id="Cxz-FQ-NgM"/>
+                <outlet property="poster" destination="xWa-lH-Wxw" id="8ku-2P-md4"/>
                 <outlet property="releaseDate" destination="SZH-60-rZZ" id="oPH-rk-pHJ"/>
                 <outlet property="title" destination="ocU-WW-Vcc" id="Lpa-UP-o21"/>
                 <outlet property="voteAverage" destination="tXj-wc-0YP" id="wLW-c7-lEE"/>

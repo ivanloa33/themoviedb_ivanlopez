@@ -19,7 +19,9 @@
 
 - (void)fetchDataWith:(NSString *)path completionHandler:(void (^__strong)(__strong id, NSError *__strong))completionHandler {
     NSURL *url = [self createURLWithPath:path];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
     [request setHTTPMethod: @"GET"];
 
     NSURLSessionTask *task = [NSURLSession.sharedSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

@@ -15,10 +15,11 @@
     self = [super init];
     if (self) {
         self.name = tvShowDict[@"name"];
+        self.title = tvShowDict[@"name"];
         self.overview = tvShowDict[@"overview"];
         self.voteAverage = [NSString stringWithFormat:@"%@", tvShowDict[@"vote_average"]];
-        self.releaseDate = tvShowDict[@"release_date"];
-        self.title = tvShowDict[@"name"];
+        self.releaseDate = tvShowDict[@"first_air_date"];
+        self.posterPath = tvShowDict[@"poster_path"];
     }
     return self;
 }

@@ -51,7 +51,7 @@
     ItemCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ItemCollectionViewCell" forIndexPath:indexPath];
     id<ItemCellViewProtocol> item = (self.segmentControl.selectedSegmentIndex == 0 || self.segmentControl.selectedSegmentIndex == 1) ?
     self.viewModel.movies[indexPath.row] :
-    self.viewModel.tvShows[indexPath.row];    
+    self.viewModel.tvShows[indexPath.row];
     [cell setupCellWithItem:item];
     return cell;
 }
