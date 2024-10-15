@@ -12,10 +12,17 @@
 - (instancetype)init {
     self = [super init];
     self.client = [[URLSessionHTTP alloc] init];
+    self.tvShows = [[NSCache alloc] init];
     return self;
 }
 
 - (void)fetchTvShowsWithPath:(NSString*)path completion:(void (^__strong)(NSArray<TvShow *> *__strong, NSError *__strong))completion {
+    NSArray<TvShow *> *cachedTvShows = [self.tvShows objectForKey:path];
+    if (cachedTvShows) {
+        completion(cachedTvShows, nil);
+        return;
+    }
+    
     [self.client fetchDataWith:path completionHandler:^(id result, NSError *error) {
         if (error != NULL) {
             NSLog(@"%@", error);
@@ -33,6 +40,7 @@
                 TvShow *tvShow = [[TvShow alloc] initWithDictionary:tvShowDict];
                 [tvShows addObject:tvShow];
             }
+            [self.tvShows setObject:tvShows forKey:path];
             completion(tvShows, nil);
         }
     }];

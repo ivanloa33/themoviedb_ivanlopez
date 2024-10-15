@@ -57,7 +57,9 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section { 
-    return self.viewModel.movies.count;
+    return (self.segmentControl.selectedSegmentIndex == 0 || self.segmentControl.selectedSegmentIndex == 1) ?
+    self.viewModel.movies.count :
+    self.viewModel.tvShows.count;
 }
 
 - (void)reloadData {

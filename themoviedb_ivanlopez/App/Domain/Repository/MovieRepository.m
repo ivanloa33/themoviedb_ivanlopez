@@ -11,13 +11,18 @@
 
 - (instancetype)init {
     self = [super init];
-    
     self.client = [[URLSessionHTTP alloc] init];
-    
+    self.movies = [[NSCache alloc] init];
     return self;
 }
 
 - (void)fetchMoviesWithPath:(NSString*)path completion:(void (^__strong)(NSArray<Movie *> *__strong, NSError *__strong))completion {
+    NSArray<Movie *> *cachedMovies = [self.movies objectForKey:path];
+    if (cachedMovies) {
+        completion(cachedMovies, nil);
+        return;
+    }
+    
     [self.client fetchDataWith:path completionHandler:^(id result, NSError *error) {
         if (error != NULL) {
             NSLog(@"%@", error);
@@ -35,6 +40,7 @@
                 Movie *newMovie = [[Movie alloc] initWithDictionary:movieDict];
                 [movies addObject:newMovie];
             }
+            [self.movies setObject:movies forKey:path];
             completion(movies, nil);
         }
     }];

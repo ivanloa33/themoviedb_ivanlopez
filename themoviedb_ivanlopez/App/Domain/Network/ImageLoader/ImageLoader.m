@@ -9,13 +9,21 @@
 
 @implementation ImageLoader
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.loadedImages = [[NSCache alloc] init];
+    }
+    return self;
+}
+
 + (instancetype)shared {
     static ImageLoader *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-            shared = [[self alloc] init];
-        });
-        return shared;
+        shared = [[self alloc] init];
+    });
+    return shared;
 }
 
 - (void)loadImage:(NSString *)urlString completion:(void (^__strong)(UIImage *__strong, NSError *__strong))completion {

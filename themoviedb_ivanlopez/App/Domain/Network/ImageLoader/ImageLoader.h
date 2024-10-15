@@ -11,9 +11,7 @@
 @interface ImageLoader : NSObject
 
 + (instancetype)shared;
-
 @property (nonatomic, strong) NSCache<NSURL *, UIImage *> *loadedImages;
-
 - (void)loadImage:(NSString *)urlString completion:(void (^)(UIImage *image, NSError *error)) completion;
                                                     
 

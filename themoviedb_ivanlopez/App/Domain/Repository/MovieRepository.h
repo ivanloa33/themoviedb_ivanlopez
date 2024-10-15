@@ -13,7 +13,7 @@
 
 - (instancetype)init;
 @property (nonatomic, strong) URLSessionHTTP *client;
-@property (strong, nonatomic) NSArray<Movie *>* movies;
+@property (nonatomic, strong) NSCache<NSString *, NSArray<Movie *>*>* movies;
 - (void)fetchMoviesWithPath:(NSString*)path completion:(void (^__strong)(NSArray<Movie *> *__strong, NSError *__strong))completion;
 
 @end
