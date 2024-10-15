@@ -18,7 +18,7 @@
     NSString *path = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:item.posterPath];
     self.title.text = item.title;
     self.releaseDate.text = item.releaseDate;
-    self.voteAverage.text = item.voteAverage;
+    self.voteAverage.text = item.voteAverage.length > 3 ? [item.voteAverage substringToIndex:3] : item.voteAverage;
     self.overview.text = item.overview;
     [self.poster loadImagefromString:path];
 }
