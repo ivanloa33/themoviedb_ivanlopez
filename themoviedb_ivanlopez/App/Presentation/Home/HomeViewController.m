@@ -14,7 +14,7 @@
     self.title = @"TV Shows";
     self.navigationItem.hidesBackButton = YES;
     [self setupCollectionView];
-    [self.viewModel fetchMovies];
+    [self.viewModel fetchPopularMovies];
 }
 
 - (void)setupCollectionView {
@@ -23,7 +23,7 @@
     layout.minimumInteritemSpacing = 8;
     layout.minimumLineSpacing = 7;
     self.collectionView.collectionViewLayout = layout;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"MovieCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MovieCollectionViewCell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"ItemCollectionViewCell"];
 }
 
 - (IBAction)didChangeSegmentControl:(UISegmentedControl *)sender {
@@ -46,9 +46,15 @@
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath { 
-    MovieCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
-    Movie *movie = self.viewModel.movies[indexPath.row];
-    [cell setupMovie:movie];
+    ItemCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ItemCollectionViewCell" forIndexPath:indexPath];
+    if (self.segmentControl.selectedSegmentIndex == 0 || self.segmentControl.selectedSegmentIndex == 1) {
+        Movie *movie = self.viewModel.movies[indexPath.row];
+        [cell setupCellWithMovie:movie];
+    } else {
+        TvShow *tvShow = self.viewModel.tvShows[indexPath.row];
+        [cell setupCellWithTvShow:tvShow];
+    }
+    
     return cell;
 }
 

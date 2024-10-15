@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "URLSessionHTTP.h"
+#import "Movie.h"
 
 @interface MovieRepository : NSObject
 

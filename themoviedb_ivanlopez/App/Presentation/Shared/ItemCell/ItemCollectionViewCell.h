@@ -7,10 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
+#import "TvShow.h"
 
-@interface MovieCollectionViewCell : UICollectionViewCell
+@interface ItemCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
-- (void)setupMovie:(Movie *)movie;
+- (void)setupCellWithMovie:(Movie *)movie;
+- (void)setupCellWithTvShow:(TvShow *)tvShow;
 
 @end

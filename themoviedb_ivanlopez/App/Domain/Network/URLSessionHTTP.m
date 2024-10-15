@@ -34,7 +34,6 @@
 }
 
 - (NSURL *)createURLWithPath:(NSString *)path {
-    NSTimeZone *currentTimeZone = [NSTimeZone systemTimeZone];
     NSArray<NSURLQueryItem *> *queryItems = @[
         [NSURLQueryItem queryItemWithName:@"api_key" value:@"01f87718c3e7c9c77a7575689846a707"]
     ];

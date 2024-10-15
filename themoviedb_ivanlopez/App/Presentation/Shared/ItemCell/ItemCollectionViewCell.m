@@ -5,18 +5,22 @@
 //  Created by Ivan Lopez Ansaldo on 14/10/24.
 //
 
-#import "MovieCollectionViewCell.h"
+#import "ItemCollectionViewCell.h"
 
-@implementation MovieCollectionViewCell
+@implementation ItemCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
-- (void)setupMovie:(Movie *)movie {
+- (void)setupCellWithMovie:(Movie *)movie {
     // Function body
     self.title.text = movie.title;
+}
+
+- (void)setupCellWithTvShow:(TvShow *)tvShow {
+    self.title.text = tvShow.name;
 }
 
 @end

@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MovieRepository.h"
+#import "TvRepository.h"
 
 @protocol HomeViewProtocol<NSObject>
 - (void) reloadData;
@@ -16,7 +17,9 @@
 
 - (instancetype)init;
 @property (nonatomic, strong) NSArray<Movie*> *movies;
-@property (nonatomic, strong) MovieRepository *repository;
+@property (nonatomic, strong) NSArray<TvShow*> *tvShows;
+@property (nonatomic, strong) MovieRepository *movieRepository;
+@property (nonatomic, strong) TvRepository *tvShowRepository;
 @property (nonatomic, strong) id<HomeViewProtocol> delegate;
 - (void)fetchPopularMovies;
 - (void)fetchAiringTodayMovies;

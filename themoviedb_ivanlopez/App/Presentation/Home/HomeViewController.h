@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewModel.h"
-#import "MovieCollectionViewCell.h"
+#import "ItemCollectionViewCell.h"
 
 @interface HomeViewController : UIViewController<HomeViewProtocol, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
