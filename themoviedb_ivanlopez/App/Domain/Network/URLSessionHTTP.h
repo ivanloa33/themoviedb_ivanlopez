@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 - (instancetype)initWithSession:(NSURLSession *)session;
-- (void)fetchDataForTvShowPath: (NSString *)path completionHandler: (void (^)(id result, NSError *error))completionHandler;
+- (void)fetchDataWith: (NSString *)path completionHandler: (void (^)(id result, NSError *error))completionHandler;
 
 @end

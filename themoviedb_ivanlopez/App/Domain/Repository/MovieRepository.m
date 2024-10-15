@@ -1,13 +1,13 @@
 //
-//  TvShowRepository.m
+//  MovieRepository.m
 //  themoviedb_ivanlopez
 //
 //  Created by Ivan Lopez Ansaldo on 14/10/24.
 //
 
-#import "TvShowRepository.h"
+#import "MovieRepository.h"
 
-@implementation TvShowRepository
+@implementation MovieRepository
 
 - (instancetype)init {
     self = [super init];
@@ -17,8 +17,8 @@
     return self;
 }
 
-- (void)fetchPopularMoviesWithCompletion:(void (^__strong)(NSArray<Movie *> *__strong, NSError *__strong))completion {
-    [self.client fetchDataForTvShowPath:@"/popular" completionHandler:^(id result, NSError *error) {
+- (void)fetchMoviesWithPath:(NSString*)path completion:(void (^__strong)(NSArray<Movie *> *__strong, NSError *__strong))completion {
+    [self.client fetchDataWith:path completionHandler:^(id result, NSError *error) {
         if (error != NULL) {
             NSLog(@"%@", error);
             return;

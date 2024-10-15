@@ -12,21 +12,36 @@
 - (instancetype)init {
     self = [super init];
     
-    self.repository = [[TvShowRepository alloc] init];
+    self.repository = [[MovieRepository alloc] init];
     
     return self;
 }
 
-- (void)getPopularMovies {
-    [self.repository fetchPopularMoviesWithCompletion:^(NSArray<Movie *> *movies, NSError *error) {
+- (void) fetchMoviesWithPath: (NSString*)path {
+    [self.repository fetchMoviesWithPath:path completion:^(NSArray<Movie *> *movies, NSError *error) {
         if (error != nil) {
             NSLog(@"error");
             return;
         }
-        self.popularMovies = movies;
+        self.movies = movies;
         [self.delegate reloadData];
-        
     }];
+}
+
+- (void)fetchPopularMovies {
+    [self fetchMoviesWithPath:@"/movie/popular"];
+}
+
+- (void)fetchTopRatedMovies {
+    [self fetchMoviesWithPath:@"/movie/top_rated"];
+}
+
+- (void)fetchAiringTodayMovies {
+    [self fetchMoviesWithPath:@"/tv/airing_today"];
+}
+
+- (void)fetchOnTVMovies {
+    [self fetchMoviesWithPath:@"/tv/on_the_air"];
 }
 
 @end

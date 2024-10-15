@@ -17,8 +17,7 @@
     return self;
 }
 
-- (void)fetchDataForTvShowPath:(NSString *)path completionHandler:(void (^__strong)(__strong id, NSError *__strong))completionHandler {
-    
+- (void)fetchDataWith:(NSString *)path completionHandler:(void (^__strong)(__strong id, NSError *__strong))completionHandler {
     NSURL *url = [self createURLWithPath:path];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod: @"GET"];
@@ -35,6 +34,7 @@
 }
 
 - (NSURL *)createURLWithPath:(NSString *)path {
+    NSTimeZone *currentTimeZone = [NSTimeZone systemTimeZone];
     NSArray<NSURLQueryItem *> *queryItems = @[
         [NSURLQueryItem queryItemWithName:@"api_key" value:@"01f87718c3e7c9c77a7575689846a707"]
     ];
@@ -44,7 +44,7 @@
     urlComponents.host = @"api.themoviedb.org";
     urlComponents.queryItems = queryItems;
     
-    urlComponents.path = [@"/3/movie" stringByAppendingString: path];
+    urlComponents.path = [@"/3" stringByAppendingString: path];
     return urlComponents.URL;
 }
 
