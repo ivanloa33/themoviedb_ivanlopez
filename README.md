@@ -1,6 +1,6 @@
 LoginView only shows initial screen with no logic, but when tap to "Login" button, I starts navigation to HomeView
 
-Project Implemented with:
+Project Implemented with:\n
 MVVM 
 Repository 
 NSCache
