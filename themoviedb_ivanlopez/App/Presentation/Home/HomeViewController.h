@@ -7,8 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeViewModel.h"
+#import "MovieCollectionViewCell.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) HomeViewModel *viewModel;
 

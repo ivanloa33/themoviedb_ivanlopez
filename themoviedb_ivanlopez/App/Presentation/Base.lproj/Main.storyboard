@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -92,24 +93,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello HomeViewcontroller " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pk-sY-9LD">
-                                <rect key="frame" x="96" y="428" width="201" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Fz-WU-u92">
+                                <rect key="frame" x="16" y="59" width="361" height="32"/>
+                                <segments>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                    <segment title="On TV"/>
+                                    <segment title="Airing Today"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeSegmentControl:" destination="ZBw-2Y-xCx" eventType="valueChanged" id="PRd-4j-Gju"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a0N-bO-Ksp">
+                                <rect key="frame" x="0.0" y="104" width="393" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v4A-Yt-qOs">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Xzr-qT-yJn" customClass="MovieCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HzJ-hL-QfX">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="350"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="175" height="350"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZBw-2Y-xCx" id="M0w-F4-Gvi"/>
+                                    <outlet property="delegate" destination="ZBw-2Y-xCx" id="gWA-15-ugU"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tN0-qi-ayZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="4Pk-sY-9LD" firstAttribute="centerY" secondItem="tN0-qi-ayZ" secondAttribute="centerY" id="Vm5-Sc-QHf"/>
-                            <constraint firstItem="4Pk-sY-9LD" firstAttribute="centerX" secondItem="tN0-qi-ayZ" secondAttribute="centerX" id="ic1-2O-eVs"/>
+                            <constraint firstItem="a0N-bO-Ksp" firstAttribute="leading" secondItem="tN0-qi-ayZ" secondAttribute="leading" id="6ns-qb-KdS"/>
+                            <constraint firstItem="9Fz-WU-u92" firstAttribute="top" secondItem="tN0-qi-ayZ" secondAttribute="top" id="AvK-sH-QuI"/>
+                            <constraint firstItem="tN0-qi-ayZ" firstAttribute="bottom" secondItem="a0N-bO-Ksp" secondAttribute="bottom" id="BjV-ZV-Wfd"/>
+                            <constraint firstItem="a0N-bO-Ksp" firstAttribute="top" secondItem="9Fz-WU-u92" secondAttribute="bottom" constant="14" id="XTP-N7-C74"/>
+                            <constraint firstItem="tN0-qi-ayZ" firstAttribute="trailing" secondItem="9Fz-WU-u92" secondAttribute="trailing" constant="16" id="btu-Q2-eFP"/>
+                            <constraint firstItem="9Fz-WU-u92" firstAttribute="leading" secondItem="tN0-qi-ayZ" secondAttribute="leading" constant="16" id="jbH-kH-o3k"/>
+                            <constraint firstItem="tN0-qi-ayZ" firstAttribute="trailing" secondItem="a0N-bO-Ksp" secondAttribute="trailing" id="qO4-Fl-OJI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="a0N-bO-Ksp" id="oVV-uE-MyB"/>
+                        <outlet property="segmentControl" destination="9Fz-WU-u92" id="5WQ-Vz-qZ3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fq-Pj-zfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1868" y="-2"/>
+            <point key="canvasLocation" x="1867.9389312977098" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
